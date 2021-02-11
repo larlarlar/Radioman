@@ -17,17 +17,17 @@ public class RadioAdvancedTest {
     @Test
     public void validateChangeVolumeMax() {
         RadioAdvanced radio = new RadioAdvanced();
-        assertEquals(0, radio.getCurrentVolume());
-        radio.setCurrentVolume(10);
-        assertEquals(10, radio.getCurrentVolume());
+        assertEquals(10, radio.getMaxVolume());
+        radio.setCurrentVolume(13);
+        assertEquals(10, radio.getMaxVolume());
     }
 
     @Test
     public void validateChangeVolumeMin() {
         RadioAdvanced radio = new RadioAdvanced();
-        assertEquals(0, radio.getCurrentVolume());
-        radio.setCurrentVolume(0);
-        assertEquals(0, radio.getCurrentVolume());
+        assertEquals(0, radio.getMinVolume());
+        radio.setCurrentVolume(-1);
+        assertEquals(0, radio.getMinVolume());
     }
     @Test
     public void validateChangeVolumeMid() {
@@ -40,17 +40,17 @@ public class RadioAdvancedTest {
     @Test
     public void validateChangeChannelMin() {
         RadioAdvanced radio = new RadioAdvanced();
-        assertEquals(0, radio.getCurrentChannel());
-        radio.setCurrentChannel(0);
-        assertEquals(0, radio.getCurrentChannel());
+        assertEquals(0, radio.getMinChannel());
+        radio.setCurrentChannel(-1);
+        assertEquals(0, radio.getMinChannel());
     }
 
     @Test
     public void validateChangeChannelMax() {
         RadioAdvanced radio = new RadioAdvanced();
-        assertEquals(0, radio.getCurrentChannel());
-        radio.setCurrentChannel(9);
-        assertEquals(9, radio.getCurrentChannel());
+        assertEquals(9, radio.getMaxChannel());
+        radio.setCurrentChannel(10);
+        assertEquals(9, radio.getMaxChannel());
     }
     @Test
     public void validateChangeChannelMid() {
