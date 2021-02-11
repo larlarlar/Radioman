@@ -18,7 +18,7 @@ public class RadioAdvancedTest {
     public void validateChangeVolumeMax() {
         RadioAdvanced radio = new RadioAdvanced();
         assertEquals(10, radio.getMaxVolume());
-        radio.setCurrentVolume(13);
+        radio.setCurrentVolume(11);
         assertEquals(10, radio.getMaxVolume());
     }
 
@@ -40,17 +40,17 @@ public class RadioAdvancedTest {
     @Test
     public void validateChangeChannelMin() {
         RadioAdvanced radio = new RadioAdvanced();
-        assertEquals(0, radio.getMinChannel());
+        assertEquals(9, radio.getMaxChannel());
         radio.setCurrentChannel(-1);
-        assertEquals(0, radio.getMinChannel());
+        assertEquals(9, radio.getMaxChannel());
     }
 
     @Test
     public void validateChangeChannelMax() {
         RadioAdvanced radio = new RadioAdvanced();
-        assertEquals(9, radio.getMaxChannel());
+        assertEquals(0, radio.getMinChannel());
         radio.setCurrentChannel(10);
-        assertEquals(9, radio.getMaxChannel());
+        assertEquals(0, radio.getMinChannel());
     }
     @Test
     public void validateChangeChannelMid() {
