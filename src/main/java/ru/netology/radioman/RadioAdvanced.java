@@ -1,6 +1,6 @@
 package ru.netology.radioman;
 
-public class RadioAdvanced {
+public class RadioAdvanced<prevChannel> {
     private String name;
     private int maxVolume = 10;
     private int minVolume = 0;
@@ -9,6 +9,9 @@ public class RadioAdvanced {
     private int minChannel = 0;
     private int currentChannel;
     private boolean on;
+    int channel;
+    int nextChannel;
+    int prevChannel;
 
     public String getName() {
         return name;
@@ -85,5 +88,24 @@ public class RadioAdvanced {
     public void setOn(boolean on) {
         this.on = on;
     }
-}
 
+    public int prevChannel(int i) {
+        int prevChannel = i;
+        for (i = 0; i > -1; i--) {
+            if (i < 0) {
+                return maxChannel;
+            }
+        } this.prevChannel = prevChannel;
+        return prevChannel;
+    }
+
+    public int nextChannel(int i) {
+        int nextChannel = i;
+        for (i = 0; i < 10; i++) {
+            if (i > 9) {
+                return minChannel;
+            }
+        }
+        return nextChannel;
+    }
+}
