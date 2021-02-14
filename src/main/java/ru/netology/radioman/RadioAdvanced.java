@@ -9,9 +9,6 @@ public class RadioAdvanced<prevChannel> {
     private int minChannel = 0;
     private int currentChannel;
     private boolean on;
-    int channel;
-    int nextChannel;
-    int prevChannel;
 
     public String getName() {
         return name;
@@ -89,22 +86,22 @@ public class RadioAdvanced<prevChannel> {
         this.on = on;
     }
 
-    public int prevChannel(int i) {
-        int prevChannel = i;
-        for (i = 0; i > -1; i--) {
-            if (i < 0) {
+    public int prevChannel() {
+        int channel = getCurrentChannel();
+        int prevChannel = channel--;
+        {
+            if (prevChannel < 0) {
                 return maxChannel;
             }
-        } this.prevChannel = prevChannel;
-        return prevChannel;
+            return prevChannel;
+        }
     }
 
-    public int nextChannel(int i) {
-        int nextChannel = i;
-        for (i = 0; i < 10; i++) {
-            if (i > 9) {
-                return minChannel;
-            }
+    public int nextChannel() {
+        int channel = getCurrentChannel();
+        int nextChannel = channel++;
+        if (nextChannel > 9) {
+            return minChannel;
         }
         return nextChannel;
     }
