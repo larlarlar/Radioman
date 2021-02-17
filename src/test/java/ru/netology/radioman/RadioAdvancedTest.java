@@ -23,6 +23,7 @@ public class RadioAdvancedTest {
     @Test
     public void validatePrevChannel() {
         RadioAdvanced radio = new RadioAdvanced();
+        radio.setCurrentChannel(8);
         radio.prevChannel();
         assertEquals(7, radio.getCurrentChannel());
     }
@@ -32,14 +33,15 @@ public class RadioAdvancedTest {
         RadioAdvanced radio = new RadioAdvanced();
         radio.setCurrentChannel(0);
         radio.prevChannel();
-        assertEquals(9, radio.prevChannel());
+        assertEquals(9, radio.getCurrentChannel());
     }
 
     @Test
     public void validateNextChannel() {
         RadioAdvanced radio = new RadioAdvanced();
+        radio.setCurrentChannel(4);
         radio.nextChannel();
-        assertEquals(9, radio.getCurrentChannel());
+        assertEquals(5, radio.getCurrentChannel());
     }
 
     @Test
@@ -47,7 +49,7 @@ public class RadioAdvancedTest {
         RadioAdvanced radio = new RadioAdvanced();
         radio.setCurrentChannel(9);
         radio.nextChannel();
-        assertEquals(0, radio.nextChannel());
+        assertEquals(0, radio.getCurrentChannel());
     }
 
     @Test
@@ -55,7 +57,7 @@ public class RadioAdvancedTest {
         RadioAdvanced radio = new RadioAdvanced();
         radio.setCurrentVolume(1);
         radio.lowVolume();
-        assertEquals(0, radio.lowVolume());
+        assertEquals(0, radio.getCurrentVolume());
     }
 
     @Test
@@ -63,7 +65,7 @@ public class RadioAdvancedTest {
         RadioAdvanced radio = new RadioAdvanced();
         radio.setCurrentVolume(0);
         radio.lowVolume();
-        assertEquals(0, radio.lowVolume());
+        assertEquals(0, radio.getCurrentVolume());
     }
 
     @Test
@@ -71,7 +73,7 @@ public class RadioAdvancedTest {
         RadioAdvanced radio = new RadioAdvanced();
         radio.setCurrentVolume(8);
         radio.highVolume();
-        assertEquals(9, radio.highVolume());
+        assertEquals(9, radio.getCurrentVolume());
     }
 
     @Test
@@ -79,7 +81,7 @@ public class RadioAdvancedTest {
         RadioAdvanced radio = new RadioAdvanced();
         radio.setCurrentVolume(10);
         radio.highVolume();
-        assertEquals(10, radio.highVolume());
+        assertEquals(10, radio.getCurrentVolume());
     }
 }
 
