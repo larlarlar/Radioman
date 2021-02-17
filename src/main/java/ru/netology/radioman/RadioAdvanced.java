@@ -19,18 +19,22 @@ public class RadioAdvanced {
     }
 
     public int getMaxVolume() {
+
         return maxVolume;
     }
 
     public void setMaxVolume(int maxVolume) {
+
         this.maxVolume = maxVolume;
     }
 
     public int getMinVolume() {
+
         return minVolume;
     }
 
     public void setMinVolume(int minVolume) {
+
         this.minVolume = minVolume;
     }
 
@@ -52,11 +56,13 @@ public class RadioAdvanced {
         return maxChannel;
     }
 
-    public void setMaxChannel(int maxChannel) {
+    public void setMaxChannel(
+            int maxChannel) {
         this.maxChannel = maxChannel;
     }
 
     public int getMinChannel() {
+
         return minChannel;
     }
 
@@ -65,26 +71,37 @@ public class RadioAdvanced {
     }
 
     public int getCurrentChannel() {
+
         return currentChannel;
     }
 
-    public void setCurrentChannel(int currentChannel) { this.currentChannel = currentChannel;}
+    public void setCurrentChannel(int currentChannel) {
+        if (currentChannel > maxChannel) {
+            return;
+        }
+        if (currentChannel < minChannel) {
+            return;
+        }
+        this.currentChannel = currentChannel;
+    }
 
     public boolean isOn() {
+
         return on;
     }
 
     public void setOn(boolean on) {
+
         this.on = on;
     }
 
     public int prevChannel() {
         int prevChannel = currentChannel--;
-            if (prevChannel < minChannel) {
-                return maxChannel;
-            }
-            return prevChannel;
+        if (prevChannel < minChannel) {
+            return maxChannel;
         }
+        return prevChannel;
+    }
 
     public int nextChannel() {
         int nextChannel = currentChannel++;
@@ -101,6 +118,7 @@ public class RadioAdvanced {
         }
         return lowVolume;
     }
+
     public int highVolume() {
         int highVolume = currentVolume++;
         if (highVolume > maxVolume) {

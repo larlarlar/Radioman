@@ -17,15 +17,14 @@ public class RadioAdvancedTest {
     public void validateChangeChannelMax() {
         RadioAdvanced radio = new RadioAdvanced();
         radio.setCurrentChannel(10);
-        assertEquals(10, radio.getCurrentChannel());
+        assertEquals(0, radio.getCurrentChannel());
     }
 
     @Test
     public void validatePrevChannel() {
         RadioAdvanced radio = new RadioAdvanced();
-        radio.setCurrentChannel(8);
         radio.prevChannel();
-        assertEquals(7, radio.prevChannel());
+        assertEquals(7, radio.getCurrentChannel());
     }
 
     @Test
@@ -39,9 +38,8 @@ public class RadioAdvancedTest {
     @Test
     public void validateNextChannel() {
         RadioAdvanced radio = new RadioAdvanced();
-        radio.setCurrentChannel(8);
         radio.nextChannel();
-        assertEquals(9, radio.nextChannel());
+        assertEquals(9, radio.getCurrentChannel());
     }
 
     @Test
