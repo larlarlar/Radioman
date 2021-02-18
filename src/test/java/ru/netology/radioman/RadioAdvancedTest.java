@@ -7,17 +7,45 @@ import static org.junit.jupiter.api.Assertions.*;
 public class RadioAdvancedTest {
 
     @Test
-    public void validateChangeChannelMin() {
+    public void validateChangeChannel() {
         RadioAdvanced radio = new RadioAdvanced();
         radio.setCurrentChannel(1);
         assertEquals(1, radio.getCurrentChannel());
     }
 
     @Test
-    public void validateChangeChannelMax() {
+    public void validateChangeChannelOverMax() {
         RadioAdvanced radio = new RadioAdvanced();
         radio.setCurrentChannel(10);
         assertEquals(0, radio.getCurrentChannel());
+    }
+
+    @Test
+    public void validateChangeChannelUnderMin() {
+        RadioAdvanced radio = new RadioAdvanced();
+        radio.setCurrentChannel(-1);
+        assertEquals(0, radio.getCurrentChannel());
+    }
+
+    @Test
+    public void validateChangeVolume() {
+        RadioAdvanced radio = new RadioAdvanced();
+        radio.setCurrentVolume(1);
+        assertEquals(1, radio.getCurrentVolume());
+    }
+
+    @Test
+    public void validateChangeVolumeOverMax() {
+        RadioAdvanced radio = new RadioAdvanced();
+        radio.setCurrentVolume(11);
+        assertEquals(0, radio.getCurrentVolume());
+    }
+
+    @Test
+    public void validateChangeVolumeUnderMin() {
+        RadioAdvanced radio = new RadioAdvanced();
+        radio.setCurrentVolume(-1);
+        assertEquals(0, radio.getCurrentVolume());
     }
 
     @Test
@@ -53,7 +81,7 @@ public class RadioAdvancedTest {
     }
 
     @Test
-    public void validateLowVolume() {
+    public void validateLowMidVolume() {
         RadioAdvanced radio = new RadioAdvanced();
         radio.setCurrentVolume(1);
         radio.lowVolume();
@@ -61,9 +89,17 @@ public class RadioAdvancedTest {
     }
 
     @Test
-    public void validateLowestVolume() {
+    public void validateLowVolume() {
         RadioAdvanced radio = new RadioAdvanced();
         radio.setCurrentVolume(0);
+        radio.lowVolume();
+        assertEquals(0, radio.getCurrentVolume());
+    }
+
+    @Test
+    public void validateLowestVolume() {
+        RadioAdvanced radio = new RadioAdvanced();
+        radio.setCurrentVolume(-1);
         radio.lowVolume();
         assertEquals(0, radio.getCurrentVolume());
     }

@@ -1,40 +1,27 @@
 package ru.netology.radioman;
 
 public class RadioAdvanced {
-    private String name;
     private int maxVolume = 10;
     private int minVolume = 0;
     private int currentVolume;
     private int maxChannel = 9;
     private int minChannel = 0;
     private int currentChannel;
-    private boolean on;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public int getMaxVolume() {
-
         return maxVolume;
     }
 
     public void setMaxVolume(int maxVolume) {
-
         this.maxVolume = maxVolume;
     }
 
     public int getMinVolume() {
-
         return minVolume;
     }
 
     public void setMinVolume(int minVolume) {
-
         this.minVolume = minVolume;
     }
 
@@ -56,13 +43,11 @@ public class RadioAdvanced {
         return maxChannel;
     }
 
-    public void setMaxChannel(
-            int maxChannel) {
+    public void setMaxChannel(int maxChannel) {
         this.maxChannel = maxChannel;
     }
 
     public int getMinChannel() {
-
         return minChannel;
     }
 
@@ -71,7 +56,6 @@ public class RadioAdvanced {
     }
 
     public int getCurrentChannel() {
-
         return currentChannel;
     }
 
@@ -85,45 +69,37 @@ public class RadioAdvanced {
         this.currentChannel = currentChannel;
     }
 
-    public boolean isOn() {
 
-        return on;
-    }
-
-    public void setOn(boolean on) {
-
-        this.on = on;
-    }
-
-    public int prevChannel() {
-        int prevChannel = currentChannel--;
-        if (prevChannel < minChannel) {
-            return maxChannel;
+    public void prevChannel() {
+        if (currentChannel <= minChannel) {
+            currentChannel = maxChannel;
+        } else {
+            currentChannel--;
         }
-        return prevChannel;
     }
 
-    public int nextChannel() {
-        int nextChannel = currentChannel++;
-        if (nextChannel > maxChannel) {
-            return minChannel;
+    public void nextChannel() {
+        if (currentChannel >= maxChannel) {
+            currentChannel = minChannel;
+        } else {
+            currentChannel++;
         }
-        return nextChannel;
     }
 
-    public int lowVolume() {
-        int lowVolume = currentVolume--;
-        if (lowVolume < minVolume) {
-            return minVolume;
+    public void lowVolume() {
+        if (currentVolume <= minVolume) {
+            currentVolume = minVolume;
+        } else {
+            currentVolume--;
         }
-        return lowVolume;
     }
 
-    public int highVolume() {
-        int highVolume = currentVolume++;
-        if (highVolume > maxVolume) {
-            return maxVolume;
+    public void highVolume() {
+        if (currentVolume >= maxVolume) {
+            currentVolume = maxVolume;
+        } else {
+            currentVolume++;
         }
-        return highVolume;
     }
 }
+
