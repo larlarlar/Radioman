@@ -1,7 +1,7 @@
 package ru.netology.radioman;
 
 public class RadioAdvanced {
-    private int maxVolume = 10;
+    private int maxVolume = 100;
     private int minVolume = 0;
     private int currentVolume;
     private int maxChannel = 9;
