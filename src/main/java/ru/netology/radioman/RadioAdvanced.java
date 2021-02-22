@@ -1,5 +1,12 @@
 package ru.netology.radioman;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class RadioAdvanced {
     private int maxVolume = 100;
     private int minVolume = 0;
