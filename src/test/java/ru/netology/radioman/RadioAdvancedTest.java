@@ -1,73 +1,34 @@
 package ru.netology.radioman;
 
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RadioAdvancedTest {
+public class RadioAdvancedTest {
 
-    @ParameterizedTest
-    @CsvSource(
-            value = {
-                    "0; 1",
-                    "6; 7",
-                    "9; 0"
-            }
-            , delimiter = ';'
-    )
-    void nextChannel(int start, int expected) {
-        RadioAdvanced radio = new RadioAdvanced();
-        radio.setCurrentChannel(start);
+    @Test
+    public void OverCheck() {
+        RadioAdvanced radio = new RadioAdvanced(100, 9);
         radio.nextChannel();
-        assertEquals(expected, radio.getCurrentChannel());
-    }
-
-    @ParameterizedTest
-    @CsvSource(
-            value = {
-                    "0; 9",
-                    "6; 5",
-                    "9; 8"
-            }
-            , delimiter = ';'
-    )
-    void prevChannel(int start, int expected) {
-        RadioAdvanced radio = new RadioAdvanced();
-        radio.setCurrentChannel(start);
+        assertEquals(0, radio.getCurrentChannel());
         radio.prevChannel();
-        assertEquals(expected, radio.getCurrentChannel());
-    }
-
-    @ParameterizedTest
-    @CsvSource(
-            value = {
-                    "0; 1",
-                    "50; 51",
-                    "100; 100"
-            }
-            , delimiter = ';'
-    )
-    void highVolume(int start, int expected) {
-        RadioAdvanced radio = new RadioAdvanced();
-        radio.setCurrentVolume(start);
+        assertEquals(9, radio.getCurrentChannel());
         radio.highVolume();
-        assertEquals(expected, radio.getCurrentVolume());
+        assertEquals(100, radio.getCurrentVolume());
+        radio.lowVolume();
+        assertEquals(99, radio.getCurrentVolume());
     }
 
-    @ParameterizedTest
-    @CsvSource(
-            value = {
-                    "100; 99",
-                    "50; 49",
-                    "0; 0"
-            }
-            , delimiter = ';'
-    )
-    void lowVolume(int start, int expected) {
-        RadioAdvanced radio = new RadioAdvanced();
-        radio.setCurrentVolume(start);
+    @Test
+    public void UnderCheck() {
+        RadioAdvanced radio = new RadioAdvanced(0, 0);
+        radio.prevChannel();
+        assertEquals(9, radio.getCurrentChannel());
+        radio.nextChannel();
+        assertEquals(0, radio.getCurrentChannel());
         radio.lowVolume();
-        assertEquals(expected, radio.getCurrentVolume());
+        assertEquals(0, radio.getCurrentVolume());
+        radio.highVolume();
+        assertEquals(1, radio.getCurrentVolume());
     }
 }

@@ -8,6 +8,13 @@ public class RadioAdvanced {
     private int minChannel = 0;
     private int currentChannel;
 
+    //AllArgsConstructor
+    public RadioAdvanced(int currentVolume,
+                         int currentChannel) {
+        this.currentVolume = currentVolume;
+        this.currentChannel = currentChannel;
+    }
+
 
     public int getMaxVolume() {
         return maxVolume;
