@@ -15,7 +15,6 @@ public class RadioAdvanced {
         this.currentChannel = currentChannel;
     }
 
-
     public int getMaxVolume() {
         return maxVolume;
     }
